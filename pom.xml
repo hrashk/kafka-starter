@@ -17,5 +17,6 @@
 
     <modules>
         <module>kafka-starter</module>
+        <module>example-producer</module>
     </modules>
 </project>
