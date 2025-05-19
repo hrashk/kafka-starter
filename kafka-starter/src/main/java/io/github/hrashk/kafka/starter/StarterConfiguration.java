@@ -25,8 +25,9 @@ public class StarterConfiguration {
     public KafkaConsumer<String, String> starterKafkaConsumer() {
         Properties props = new Properties();
         props.setProperty(ConsumerConfig.BOOTSTRAP_SERVERS_CONFIG, starterProperties.bootstrapServers());
-        props.setProperty(ConsumerConfig.GROUP_ID_CONFIG, starterProperties.groupId());
-        props.setProperty(ConsumerConfig.AUTO_OFFSET_RESET_CONFIG, "earliest");
+        props.setProperty(ConsumerConfig.GROUP_ID_CONFIG, starterProperties.consumer().groupId());
+        props.setProperty(ConsumerConfig.AUTO_OFFSET_RESET_CONFIG, starterProperties.consumer().autoOffsetReset());
+        props.setProperty(ConsumerConfig.ENABLE_AUTO_COMMIT_CONFIG, starterProperties.consumer().enableAutoCommit());
         props.setProperty(ConsumerConfig.KEY_DESERIALIZER_CLASS_CONFIG, StringDeserializer.class.getName());
         props.setProperty(ConsumerConfig.VALUE_DESERIALIZER_CLASS_CONFIG, StringDeserializer.class.getName());
 
@@ -38,6 +39,10 @@ public class StarterConfiguration {
     public KafkaProducer<String, String> starterKafkaProducer() {
         Properties props = new Properties();
         props.put(ProducerConfig.BOOTSTRAP_SERVERS_CONFIG, starterProperties.bootstrapServers());
+        props.put(ProducerConfig.ACKS_CONFIG, starterProperties.producer().acks());
+        props.put(ProducerConfig.RETRIES_CONFIG, starterProperties.producer().retries());
+        props.put(ProducerConfig.RETRY_BACKOFF_MS_CONFIG, starterProperties.producer().retryBackoffMs());
+        props.put(ProducerConfig.DELIVERY_TIMEOUT_MS_CONFIG, starterProperties.producer().deliveryTimeoutMs());
         props.put(ProducerConfig.KEY_SERIALIZER_CLASS_CONFIG, StringSerializer.class.getName());
         props.put(ProducerConfig.VALUE_SERIALIZER_CLASS_CONFIG, StringSerializer.class.getName());
 

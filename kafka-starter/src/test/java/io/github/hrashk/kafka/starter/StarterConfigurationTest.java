@@ -16,7 +16,7 @@ import static org.junit.jupiter.api.Assertions.assertEquals;
 
 @SpringBootTest(webEnvironment = SpringBootTest.WebEnvironment.NONE,
         classes = StarterConfiguration.class,
-        properties = {"kafka-starter.group-id=test-group"})
+        properties = {"kafka-starter.consumer.group-id=test-group"})
 @ContextConfiguration(initializers = KafkaInitializer.class)
 class StarterConfigurationTest {
     static final String TOPIC = "test-topic";
