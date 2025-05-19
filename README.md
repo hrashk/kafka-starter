@@ -1,14 +1,14 @@
-### build the project and run its tests
+### Installing the starter library locally
+```bash
+./mvnw -f kafka-starter/pom.xml -DskipTests clean install
+```
+
+### Building all project modules along with running the tests
 ```bash
 ./mvnw clean package
 ```
 
-### install the starter library locally (and skip the tests)
-```bash
-./mvnw -f kafka-starter/pom.xml -DskipTests install
-```
-
-### run the producer and consumer examples in two separate terminals
+### Running examples
 
 First, start the docker containers
 ```bash
@@ -33,7 +33,9 @@ docker compose -f docker/docker-compose.yml down
 ```
 
 
-### change configuration
+### Configuration
 
-Observe how IDE provides completion recommendations of the new properties from the starter library
+One can change configuration in application.yml files and observe their effect. 
+
+Notice how IDE provides completion recommendations of the new properties from the starter library
 when editing application.yml file.
