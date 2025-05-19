@@ -35,6 +35,9 @@ public class ExampleConsumerApplication implements CommandLineRunner {
                 System.out.printf("Received Message topic = %s, partition = %d, offset = %d, key = %s, value = %s%n",
                         record.topic(), record.partition(), record.offset(), record.key(), record.value());
             });
+
+            // alternatively, call commitSync() if performance is not an issue
+            consumer.commitAsync();
         }
     }
 }
