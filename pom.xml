@@ -18,5 +18,6 @@
     <modules>
         <module>kafka-starter</module>
         <module>example-producer</module>
+        <module>example-consumer</module>
     </modules>
 </project>

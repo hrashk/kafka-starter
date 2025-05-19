@@ -1,0 +1,9 @@
+spring:
+  application:
+    name: example-producer
+
+kafka-starter:
+  group-id: custom-group
+
+app:
+  topic: custom-topic
