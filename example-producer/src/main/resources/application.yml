@@ -1,3 +1,6 @@
 spring:
   application:
     name: example-producer
+
+app:
+  topic: custom-topic
