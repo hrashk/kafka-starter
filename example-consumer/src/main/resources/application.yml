@@ -3,7 +3,9 @@ spring:
     name: example-producer
 
 kafka-starter:
-  group-id: custom-group
+  consumer:
+    group-id: custom-group
+    enable-auto-commit: false
 
 app:
   topic: custom-topic
