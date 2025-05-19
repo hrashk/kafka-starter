@@ -26,7 +26,9 @@ public class ExampleProducerApplication implements CommandLineRunner {
     public void run(String... args) throws Exception {
         int i = 1;
         while (true) {
-            producer.send(new ProducerRecord<>(topic, "key-" + i, "message-" + i));
+            ProducerRecord<String, String> record = new ProducerRecord<>(topic, "key-" + i, "message-" + i);
+            producer.send(record);
+            System.out.printf("Sent Message: %s%n", record);
             Thread.sleep(1000L);
             i++;
         }
