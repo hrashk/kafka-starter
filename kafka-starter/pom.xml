@@ -79,12 +79,12 @@
                 <artifactId>avro-maven-plugin</artifactId>
                 <version>1.12.0</version>
                 <configuration>
-                    <sourceDirectory>${project.basedir}/src/main/avro/</sourceDirectory>
-                    <outputDirectory>${project.basedir}/target/generated-sources/java/</outputDirectory>
+                    <sourceDirectory>${project.basedir}/src/test/avro/</sourceDirectory>
+                    <outputDirectory>${project.basedir}/target/generated-test-sources/java/</outputDirectory>
                 </configuration>
                 <executions>
                     <execution>
-                        <phase>generate-sources</phase>
+                        <phase>generate-test-sources</phase>
                         <goals>
                             <goal>schema</goal>
                             <goal>idl</goal>
