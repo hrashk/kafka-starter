@@ -14,7 +14,7 @@ public record StarterProperties(
         @DefaultValue("localhost:9092")
         String bootstrapServers,
 
-        @DefaultValue("localhost:8081")
+        @DefaultValue("http://localhost:8081")
         String schemaRegistryUrl,
 
         @DefaultValue
