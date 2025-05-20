@@ -7,11 +7,15 @@ import org.springframework.boot.context.properties.bind.DefaultValue;
  * Configuration properties for the Kafka starter library.
  *
  * @param bootstrapServers Kafka bootstrap servers.
+ * @param schemaRegistryUrl Schema registry URL.
  */
 @ConfigurationProperties(prefix = "kafka-starter")
 public record StarterProperties(
         @DefaultValue("localhost:9092")
         String bootstrapServers,
+
+        @DefaultValue("localhost:8081")
+        String schemaRegistryUrl,
 
         @DefaultValue
         ProducerProperties producer,
@@ -23,6 +27,7 @@ public record StarterProperties(
      * @param autoOffsetReset  Offset reset policy: earliest, latest, none.
      * @param groupId          Consumer group ID.
      * @param enableAutoCommit Enable auto commit.
+     * @param specificAvroReader Use specific Avro reader.
      */
     public record ConsumerProperties(
             @DefaultValue("earliest")
@@ -32,7 +37,10 @@ public record StarterProperties(
             String groupId,
 
             @DefaultValue("true")
-            String enableAutoCommit
+            boolean enableAutoCommit,
+
+            @DefaultValue("false")
+            boolean specificAvroReader
     ) {
     }
 
@@ -47,13 +55,13 @@ public record StarterProperties(
             String acks,
 
             @DefaultValue("1000")
-            String retries,
+            int retries,
 
             @DefaultValue("100")
-            String retryBackoffMs,
+            int retryBackoffMs,
 
             @DefaultValue("120000")
-            String deliveryTimeoutMs
+            int deliveryTimeoutMs
     ) {
     }
 }
