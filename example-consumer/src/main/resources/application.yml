@@ -6,6 +6,7 @@ kafka-starter:
   consumer:
     group-id: custom-group
     enable-auto-commit: false
+    specific-avro-reader: true
 
 app:
   topic: custom-topic
