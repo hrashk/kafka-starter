@@ -1,14 +1,6 @@
-### Install the starter library locally
-
-This project was built with JDK 21 and maven 3.9.9. Later versions should also work.
-
+### Build and install all project modules and run the tests
 ```bash
-./mvnw -f kafka-starter/pom.xml -DskipTests clean install
-```
-
-### Build all project modules along with running the tests
-```bash
-./mvnw clean package
+./mvnw clean install
 ```
 
 ### Run the sample produce and consumer
