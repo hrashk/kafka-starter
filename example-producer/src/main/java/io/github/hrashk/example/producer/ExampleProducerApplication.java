@@ -16,6 +16,9 @@ public class ExampleProducerApplication implements CommandLineRunner {
     @Value("${app.topic}")
     private String topic;
 
+    @Value("${app.message-count}")
+    private Integer messageCount;
+
     public ExampleProducerApplication(KafkaProducer<String, GenericRecord> producer) {
         this.producer = producer;
     }
@@ -28,7 +31,7 @@ public class ExampleProducerApplication implements CommandLineRunner {
     public void run(String... args) throws Exception {
         int i = 1;
 
-        while (true) {
+        while (i <= messageCount) {
             var msg = new UserProfile("Janet Doey", "email" + i + "@example.com", 18);
             ProducerRecord<String, GenericRecord> record = new ProducerRecord<>(topic, "key-" + i, msg);
             producer.send(record);
