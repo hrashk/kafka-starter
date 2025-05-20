@@ -1,17 +1,17 @@
-### Installing the starter library locally
+### Install the starter library locally
 
-This project was built with JDK 21 and maven 3.9. Later versions should also work.
+This project was built with JDK 21 and maven 3.9.9. Later versions should also work.
 
 ```bash
 ./mvnw -f kafka-starter/pom.xml -DskipTests clean install
 ```
 
-### Building all project modules along with running the tests
+### Build all project modules along with running the tests
 ```bash
 ./mvnw clean package
 ```
 
-### Running examples
+### Run the sample produce and consumer
 
 First, start the docker containers
 ```bash
@@ -23,7 +23,7 @@ Then run the producer in a separate terminal window
 java -jar example-producer/target/example-producer-1.0-SNAPSHOT.jar
 ```
 
-Then the consumer, also in a separate terminal
+Then the consumer, also in a separate terminal. Note how the consumer is using a different but compatible schema.
 ```bash
 java -jar example-consumer/target/example-consumer-1.0-SNAPSHOT.jar
 ```
