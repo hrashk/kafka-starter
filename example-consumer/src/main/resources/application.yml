@@ -10,3 +10,4 @@ kafka-starter:
 
 app:
   topic: custom-topic
+  message-count: 10000

@@ -19,6 +19,9 @@ public class ExampleConsumerApplication implements CommandLineRunner {
     @Value("${app.topic}")
     private String topic;
 
+    @Value("${app.message-count}")
+    private Integer messageCount;
+
     public ExampleConsumerApplication(KafkaConsumer<String, GenericRecord> consumer) {
         this.consumer = consumer;
     }
@@ -30,9 +33,12 @@ public class ExampleConsumerApplication implements CommandLineRunner {
     @Override
     public void run(String... args) throws Exception {
         consumer.subscribe(List.of(topic));
+        int read = 0;
 
-        while (true) {
+        while (read < messageCount) {
             ConsumerRecords<String, GenericRecord> records = consumer.poll(Duration.ofSeconds(1));
+            read += records.count();
+
             records.forEach(record -> {
                 var user = (UserProfile) record.value();
 
