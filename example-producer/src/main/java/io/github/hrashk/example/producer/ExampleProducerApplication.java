@@ -1,5 +1,7 @@
 package io.github.hrashk.example.producer;
 
+import io.github.hrashk.example.UserProfile;
+import org.apache.avro.generic.GenericRecord;
 import org.apache.kafka.clients.producer.KafkaProducer;
 import org.apache.kafka.clients.producer.ProducerRecord;
 import org.springframework.beans.factory.annotation.Value;
@@ -9,12 +11,12 @@ import org.springframework.boot.autoconfigure.SpringBootApplication;
 
 @SpringBootApplication
 public class ExampleProducerApplication implements CommandLineRunner {
-    private final KafkaProducer<String, String> producer;
+    private final KafkaProducer<String, GenericRecord> producer;
 
     @Value("${app.topic}")
     private String topic;
 
-    public ExampleProducerApplication(KafkaProducer<String, String> producer) {
+    public ExampleProducerApplication(KafkaProducer<String, GenericRecord> producer) {
         this.producer = producer;
     }
 
@@ -25,8 +27,10 @@ public class ExampleProducerApplication implements CommandLineRunner {
     @Override
     public void run(String... args) throws Exception {
         int i = 1;
+
         while (true) {
-            ProducerRecord<String, String> record = new ProducerRecord<>(topic, "key-" + i, "message-" + i);
+            var msg = new UserProfile("Janet Doey", "email" + i + "@example.com", 18);
+            ProducerRecord<String, GenericRecord> record = new ProducerRecord<>(topic, "key-" + i, msg);
             producer.send(record);
             System.out.printf("Sent Message: %s%n", record);
             Thread.sleep(1000L);

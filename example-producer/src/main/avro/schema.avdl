@@ -1,0 +1,7 @@
+namespace io.github.hrashk.example;
+
+record UserProfile {
+    string name;
+    string email;
+    int age;
+}
