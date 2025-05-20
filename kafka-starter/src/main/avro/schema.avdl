@@ -1,0 +1,7 @@
+namespace io.github.hrashk.kafka.starter;
+
+record Message {
+    string name;
+    string email;
+    int age;
+}
